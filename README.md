@@ -26,7 +26,7 @@ ubuntu       latest    a6be1f66f70f   2 weeks ago   69.2MB
 
 ### How to change and save images?
 
-![img.png](images/containers.jpg)
+![img.png](images/containers2.jpg)
 
 #### 1. Modify something
 ```shell
