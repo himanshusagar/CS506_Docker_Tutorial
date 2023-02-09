@@ -160,4 +160,18 @@ $ docker compose up
 ```
 Step 5: Profit! (http://127.0.0.1:8000)
 
+### Docker Compose:
+1. Single machine Coordination
+2. Designed for testing and development
+3. Brings up containers, volumes, networks etc in single command.
+
+What if I want to `orchestrate` more containers/machines? 
+`Kubernetes` - https://kubernetes.io/
+
+### To Dos:
+1. Views counts are not persistent
+2. If containers are killed and started back the counter will go back to 0
+3. How do we store the views counter?
+
+
 
