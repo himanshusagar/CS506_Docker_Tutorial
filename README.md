@@ -108,10 +108,6 @@ root@09681e5f9eae:/#
 ```shell
 docker rmi <image_name>
 ```
-1. Delete an Image
-```shell
-docker rmi <image_name>
-```
 2. Remove container
 ```shell
 docker rm <container_name>
