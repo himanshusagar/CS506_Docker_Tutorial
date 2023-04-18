@@ -1,9 +1,20 @@
-# docker-compose.yaml
-version: '3'
-
+version: "3.9"
 services:
   web:
-    image: 'hs_app'
-    build: '.'
+    image: "my-flask-app"
+    user: ${CURRENT_UID}
     ports:
-      - '9989:9989'
+      - "8000:5000"
+    volumes:
+      - redis_data_user5:/data
+
+  redis:
+    image: "redis:bullseye"
+    command: redis-server --save 10 1 --loglevel warning
+
+volumes:
+  redis_data_user5:
+      driver_opts:
+            type: none
+            device: /nobackup/hsagar2/redis_data_user5 # mkdir this directory and ~ doesn't work here.
+            o: bind
