@@ -2,19 +2,38 @@ version: "3.9"
 services:
   web:
     image: "my-flask-app"
-    user: ${CURRENT_UID}
     ports:
       - "8000:5000"
-    volumes:
-      - redis_data_user5:/data
+    depends_on:
+      - mysql
 
-  redis:
-    image: "redis:bullseye"
-    command: redis-server --save 10 1 --loglevel warning
+  mysql:
+    image: mysql:8.0
+    environment:
+      MYSQL_ROOT_PASSWORD: mysql_password # talk about simple...
+      MYSQL_DATABASE: mysql_db
+      MYSQL_USER: root 
+      MYSQL_PASSWORD: mysql_password
+    volumes:
+      - user_data:/var/lib/mysql
+    expose:
+      - 3306
+
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin
+    environment:
+      PMA_HOST: mysql
+      PMA_USER: root
+      PMA_PASSWORD: mysql_password
+    ports:
+      - "8082:80"
+    depends_on:
+      - mysql
+
 
 volumes:
-  redis_data_user5:
+  user_data:
       driver_opts:
             type: none
-            device: /nobackup/hsagar2/redis_data_user5 # mkdir this directory and ~ doesn't work here.
+            device: /nobackup/hsagar2/user_data # mkdir this directory and relative path doesn't work here.
             o: bind
