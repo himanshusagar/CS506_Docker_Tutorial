@@ -27,7 +27,9 @@ Go inside hs_app folder and look at all the files.
 1. Modify `give_perms.sh` to include your and team members' cs logins. You can also change `user_data` to some other folder name if you'd like. Rest of the stuff stays same. 
 2. `bash give_perms.sh` to run shell script.
 3. Build image using `docker build -t my-flask-app`
-4. Build compose file using `docker compose up`. 
+4. Build compose file using `docker compose up .` 
 5. Now our setup is running in `cs-team-xx` machine but we need to port forward backend and phpmyadmin to it to be seen on local machine(personal laptop).
 6. For backend(flask application) : `ssh -L 8000:cs506-team-00.cs.wisc.edu:8000 hsagar2@cs506-team-00.cs.wisc.edu`
 For phpmyadmin (Optional) : `ssh -L 8082:cs506-team-00.cs.wisc.edu:8082 hsagar2@cs506-team-00.cs.wisc.edu`
+7. For pruning images : `docker system prune -a` 
+8. For pruning images and volumes : `docker system prune -a --volumes` 
